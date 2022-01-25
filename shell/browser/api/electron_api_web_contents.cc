@@ -1458,6 +1458,8 @@ void WebContents::HandleNewRenderFrame(
         guest ? SK_ColorTRANSPARENT : web_preferences->GetBackgroundColor();
     web_contents()->SetPageBaseBackgroundColor(color);
     rwhv->SetBackgroundColor(color.value_or(SK_ColorWHITE));
+    static_cast<content::RenderWidgetHostViewBase*>(rwhv)
+        ->SetContentBackgroundColor(color.value_or(SK_ColorWHITE));
   }
 
   if (!background_throttling_)
